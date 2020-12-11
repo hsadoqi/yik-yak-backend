@@ -1,25 +1,14 @@
 class CommentsController < ApplicationController
-    before_action :set_comment, only: [:create, :update, :destroy]
+    before_action :set_comment, only: [:destroy]
 
     def index 
         render json: Comment.all
     end 
 
     def create 
-        # byebug 
         comment = Comment.new(comment_params)
 
         if comment.save 
-            render json: comment 
-        else 
-            byebug 
-        end 
-    end 
-
-    def update 
-        comment = Comment.find(params[:id])
-
-        if comment.update(comment_params)
             render json: comment 
         else 
             byebug 
